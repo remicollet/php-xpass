@@ -41,9 +41,10 @@ PHP_RINIT_FUNCTION(xpass)
 PHP_MINFO_FUNCTION(xpass)
 {
 	php_info_print_table_start();
-	php_info_print_table_header(2, "xpass support", "enabled");
+	php_info_print_table_header(2, "Extended password support", "enabled");
 	php_info_print_table_row(2, "Extension version", PHP_XPASS_VERSION);
-	php_info_print_table_row(2, "Author", PHP_XPASS_VERSION);
+	php_info_print_table_row(2, "libxcrypt version", XCRYPT_VERSION_STR);
+	php_info_print_table_row(2, "Author", PHP_XPASS_AUTHOR);
 	php_info_print_table_row(2, "License", PHP_XPASS_LICENSE);
 #ifdef HAVE_CRYPT_SHA512
 	php_info_print_table_row(2, "sha512 hash", "yes");

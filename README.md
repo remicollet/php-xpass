@@ -44,6 +44,10 @@ From the sources tree
     php > var_dump(password_verify("secret", $hash));
     bool(true)
 
+## supported options
+
+* `cost` controls the CPU time cost of the hash. If `cost` is 0, a low default cost will be selected.
+
 # LICENSE
 
 Author: Remi Collet
