@@ -4,8 +4,8 @@
   <channel>pecl.php.net</channel>
   <summary>Extended password extension</summary>
   <description>
-This extension provides password hashing algorithms used by Linux distributions,
-using extended crypt library (libxcrypt).
+This extension provides password hashing algorithms used by Linux
+distributions, using extended crypt library (libxcrypt).
 
 * sha512 provided for legacy as used on some old distributions
 * yescrypt used on modern distributions
@@ -16,13 +16,13 @@ using extended crypt library (libxcrypt).
     <email>remi@php.net</email>
     <active>yes</active>
   </lead>
-  <date>2024-08-27</date>
+  <date>2024-08-28</date>
   <version>
-    <release>1.0.0dev</release>
+    <release>1.0.0RC1</release>
     <api>1.0.0</api>
   </version>
   <stability>
-    <release>stable</release>
+    <release>beta</release>
     <api>stable</api>
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>

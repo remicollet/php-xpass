@@ -22,7 +22,10 @@ Notices: these are fast, don't expect high security level.
 
 # Build
 
+Compatible with PHP 8.0 or greater.
+
 You need the Extended crypt library development files (libxcrypt-devel)
+version 4.4 or greater.
 
 From the sources tree
 

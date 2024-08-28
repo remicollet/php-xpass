@@ -124,7 +124,7 @@ static bool php_xpass_verify(const zend_string *password, const zend_string *has
 
 static bool php_xpass_needs_rehash(const zend_string *hash, zend_array *options) {
 
-	if (crypt_checksalt(ZSTR_VAL(hash))) {
+	if (crypt_checksalt(ZSTR_VAL(hash)) != CRYPT_SALT_OK) {
 		return 1;
 	}
 	return 0;
