@@ -42,8 +42,16 @@ From the sources tree
 ## password hashing and verifying
 
     $ php -a
+
+    php > var_dump($hash = password_hash("secret", PASSWORD_SHA512));
+    string(106) "$6$y2T3Ql8zEgzbpZeK$s42Q92ggqycC280QMx4.bid1gKI8ghM7ZQJF.F.fbY49Cqj/gnS9h3CiOXyYh0pvtisqiNavSPJP8ZR9Ty7RX1"
+    
     php > var_dump($hash = password_hash("secret", PASSWORD_YESCRYPT));
     string(73) "$y$j9T$X9Va6i3zHjyKGJAskYZPv.$i1m/WR1C6/tqhB7IdOsi9Ar1JF4Qr38vBx104ao1OS5"
+
+    php > var_dump($hash = password_hash("secret", PASSWORD_YESCRYPT, ['cost'=>7]));
+    string(73) "$y$jBT$bo5CcI5fdsyad1Av.vgLQ.$FgOq74zufVvkOL/q4OBmcKDMMXJB9VzrJXEZrhoVjf6"
+
     php > var_dump(password_verify("secret", $hash));
     bool(true)
 
