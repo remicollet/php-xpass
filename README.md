@@ -5,7 +5,7 @@ This extension provides password hashing algorithms used by Linux distributions.
 * **sha512** (`$6$`) provided for legacy as used on some old distributions (ex: RHEL-8)
 * **yescrypt** (`$y$`) used on modern distributions
 
-Notices: these are fast, don't expect high security level.
+Notices: these can be fast, don't expect improved security level.
 
 **Computation time**
 
@@ -13,7 +13,10 @@ Notices: these are fast, don't expect high security level.
 * argon2i: 0.53"
 * argon2id: 0.55"
 * sha512: 0.01"
-* yescrypt: 0,08"
+* yescrypt: 0,07" with default cost of 5
+* yescrypt: 0,14" with cost=6
+* yescrypt: 0,30" with cost=7
+* yescrypt: 0,62" with cost=8
 
 # Sources
 
