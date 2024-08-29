@@ -13,10 +13,10 @@ Notices: these can be fast, don't expect improved security level.
 * argon2i: 0.53"
 * argon2id: 0.55"
 * sha512: 0.01"
-* yescrypt: 0,07" with default cost of 5
-* yescrypt: 0,14" with cost=6
-* yescrypt: 0,30" with cost=7
-* yescrypt: 0,62" with cost=8
+* yescrypt: 0.07" with default cost of 5
+* yescrypt: 0.14" with cost=6
+* yescrypt: 0.30" with cost=7
+* yescrypt: 0.62" with cost=8
 
 # Sources
 
@@ -49,7 +49,7 @@ From the sources tree
 
 ## supported options
 
-* `cost` controls the CPU time cost of the hash. If `cost` is 0, a low default cost will be selected.
+* `cost` controls the CPU time cost of the hash. If `cost` is 0, a reasonable default cost will be selected.
 
 # LICENSE
 
@@ -59,4 +59,4 @@ This extension is licensed under [The PHP License, version 3.01](http://www.php.
 
 # History
 
-Created on user request
+Created on user request for consistency with system crypto.
