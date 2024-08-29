@@ -25,7 +25,7 @@ if test "$PHP_XPASS" != "no"; then
       return (result != NULL && strncmp(result, "$y$", 3) == 0) ? 0 : 1;
   ]])], [
       AC_MSG_RESULT([available])
-      AC_DEFINE([HAVE_CRYPT_YESCRYPT], [1], [Define if libxcrypt supports SHA512])
+      AC_DEFINE([HAVE_CRYPT_YESCRYPT], [1], [ Have yescrypt hash support ])
   ], [
       AC_MSG_RESULT([missing])
   ])
