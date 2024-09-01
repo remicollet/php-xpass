@@ -12,15 +12,14 @@ if test "$PHP_XPASS" != "no"; then
   PHP_EVAL_LIBLINE([$LIBXCRYPT_LIBS], [XPASS_SHARED_LIBADD])
 
   old_CFLAGS=$CFLAGS; CFLAGS="$CFLAGS $LIBXCRYPT_CFLAGS"
-  old_LDFLAGS=$LDFLAGS; LDFLAGS="$LIBXCRYPT_LIBS $LDFLAGS"
+  old_LIBS=$LIBS; LIBS="$LIBS $LIBXCRYPT_LIBS"
 
-  AC_MSG_CHECKING([for yescrypt])
+  AC_MSG_CHECKING([for yescrypt algo])
   AC_RUN_IFELSE([AC_LANG_SOURCE([[
 #include <string.h>
 #include <unistd.h>
 #include <crypt.h>
 #include <stdlib.h>
-#include <string.h>
 
 int main(void) {
     char salt[8];
@@ -39,7 +38,6 @@ int main(void) {
 #include <unistd.h>
 #include <crypt.h>
 #include <stdlib.h>
-#include <string.h>
 
 int main(void) {
     char salt[8];
@@ -53,7 +51,7 @@ int main(void) {
   ])
 
   CFLAGS=$old_CFLAGS
-  LDFLAGS=$old_LDFLAGS
+  LIBS=$old_LIBS
 
   PHP_SUBST([XPASS_SHARED_LIBADD])
 
