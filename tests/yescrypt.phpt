@@ -1,5 +1,5 @@
 --TEST--
-Check if xpass is loaded
+Check yescrypt algo
 --EXTENSIONS--
 xpass
 --SKIPIF--
