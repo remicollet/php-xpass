@@ -1,0 +1,45 @@
+name: CI
+on:
+  push:
+    branches:
+        - main
+  pull_request:
+jobs:
+  Linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.0', '8.1', '8.2', '8.3']
+        ts: ['cli', 'zts']
+        xcrypt: ['master']
+    container:
+      image: php:${{ matrix.php }}-${{ matrix.ts }}
+    steps:
+      - name: Install build dependencies
+        run: |
+          apt-get update
+          apt-get install -y "automake" "libtool"
+      - name: Clone libxcrypt
+        uses: actions/checkout@v4
+        with:
+          repository: besser82/libxcrypt
+          ref: ${{ matrix.xcrypt }}
+          path: libxcrypt
+      - name: Install libxcrypt
+        working-directory: ${{ github.workspace }}/libxcrypt
+        run: |
+          ./autogen.sh
+          ./configure
+          make -j"$(nproc)"
+          make install
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Make xpass
+        run: |
+          phpize
+          ./configure
+          make -j"$(nproc)"
+      - name: Test xpass
+        env:
+          TEST_PHP_ARGS: '-q --show-diff'
+        run: make test
