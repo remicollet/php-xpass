@@ -1,5 +1,5 @@
 --TEST--
-Check if xpass is loaded
+Check sha512 algo
 --EXTENSIONS--
 xpass
 --SKIPIF--
