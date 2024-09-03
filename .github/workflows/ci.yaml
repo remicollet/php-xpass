@@ -11,27 +11,13 @@ jobs:
       matrix:
         php: ['8.0', '8.1', '8.2', '8.3']
         ts: ['cli', 'zts']
-        xcrypt: ['master']
     container:
       image: php:${{ matrix.php }}-${{ matrix.ts }}
     steps:
       - name: Install build dependencies
         run: |
           apt-get update
-          apt-get install -y "automake" "libtool"
-      - name: Clone libxcrypt
-        uses: actions/checkout@v4
-        with:
-          repository: besser82/libxcrypt
-          ref: ${{ matrix.xcrypt }}
-          path: libxcrypt
-      - name: Install libxcrypt
-        working-directory: ${{ github.workspace }}/libxcrypt
-        run: |
-          ./autogen.sh
-          ./configure
-          make -j"$(nproc)"
-          make install
+          apt-get install -y "automake" "libtool" "libcrypt-dev"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Make xpass
