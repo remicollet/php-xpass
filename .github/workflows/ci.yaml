@@ -46,6 +46,34 @@ jobs:
           TEST_PHP_ARGS: '-q --show-diff'
         run: |
           make test
+  Linux_Fedora:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fedora: [39, 40, 41]
+        php: ['8.0', '8.1', '8.2', '8.3']
+    container:
+      image: fedora:${{ matrix.fedora }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install PHP
+        run: |
+          dnf install -y "https://rpms.remirepo.net/fedora/remi-release-${{ matrix.fedora }}.rpm"
+          dnf --enablerepo=remi-modular module enable -y "php:remi-${{ matrix.php }}"
+          dnf --enablerepo=remi,remi-modular install -y "php" "php-devel"
+      - name: Show PHP version
+        run: php -v
+      - name: Make php-xpass
+        run: |
+          phpize
+          ./configure
+          make -j"$(nproc)"
+      - name: Test php-xpass
+        env:
+          TEST_PHP_ARGS: '-q --show-diff'
+        run: |
+          make test
   Linux_Debian:
     runs-on: ubuntu-latest
     strategy:
