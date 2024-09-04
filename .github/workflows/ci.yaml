@@ -11,16 +11,19 @@ jobs:
       matrix:
         distro: ['rockylinux']
         el: [9]
-        php: ['8.0', '8.1', '8.2', 'remi-8.0', 'remi-8.1', 'remi-8.2', 'remi-8.3']
+        php: [0, '8.1', '8.2', 'remi-8.0', 'remi-8.1', 'remi-8.2', 'remi-8.3']
     container:
       image: ${{ matrix.distro }}:${{ matrix.el }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install PHP
+      - name: Setup PHP module
+        if: ${{ matrix.php }}
         run: |
           dnf install -y "https://rpms.remirepo.net/enterprise/remi-release-${{ matrix.el }}.rpm"
           dnf module enable -y "php:${{ matrix.php }}"
+      - name: Install PHP
+        run: |
           dnf install -y "php" "php-devel" "libxcrypt-devel"
       - name: Show PHP version
         run: php -v
