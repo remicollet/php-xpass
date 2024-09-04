@@ -1,0 +1,100 @@
+name: CI
+on:
+  push:
+    branches:
+        - master
+  pull_request:
+jobs:
+  Linux_EL:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        distro: ['rockylinux']
+        el: [8, 9]
+        php: ['8.0', '8.1', '8.2', '8.3']
+    container:
+      image: ${{ matrix.distro }}:${{ matrix.el }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install PHP
+        run: |
+          dnf install -y "https://rpms.remirepo.net/enterprise/remi-release-${{ matrix.el }}.rpm"
+          dnf config-manager --disable -y "epel" "remi-modular" "remi-safe"
+          dnf --enablerepo=remi-modular module enable -y "php:remi-${{ matrix.php }}"
+          dnf --enablerepo=epel,remi,remi-modular install -y "php" "php-devel"
+      - name: Show PHP version
+        run: php -v
+      - name: Manually install libxcrypt 4.4.x (EL8 and earlier)
+        if: ${{ matrix.el < 9 }}
+        run: |
+          dnf install -y "python3-pip" "perl-open" "git"
+          pip3 install "passlib"
+          git clone --depth=1 --branch="v4.4.36" "https://github.com/besser82/libxcrypt.git" "libxcrypt"
+          cd "libxcrypt"
+          ./autogen.sh
+          ./configure --with-pkgconfigdir="/usr/lib64/pkgconfig" --libdir="/usr/lib64"
+          make -j"$(nproc)"
+          make install
+      - name: Make php-xpass
+        run: |
+          phpize
+          ./configure
+          make -j"$(nproc)"
+      - name: Test php-xpass
+        env:
+          TEST_PHP_ARGS: '-q --show-diff'
+        run: |
+          make test
+  Linux_Fedora:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        fedora: [39, 40, 41]
+        php: ['8.0', '8.1', '8.2', '8.3']
+    container:
+      image: fedora:${{ matrix.fedora }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install PHP
+        run: |
+          dnf install -y "https://rpms.remirepo.net/fedora/remi-release-${{ matrix.fedora }}.rpm"
+          dnf --enablerepo=remi-modular module enable -y "php:remi-${{ matrix.php }}"
+          dnf --enablerepo=remi,remi-modular install -y "php" "php-devel"
+      - name: Show PHP version
+        run: php -v
+      - name: Make php-xpass
+        run: |
+          phpize
+          ./configure
+          make -j"$(nproc)"
+      - name: Test php-xpass
+        env:
+          TEST_PHP_ARGS: '-q --show-diff'
+        run: |
+          make test
+  Linux_Debian:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.0', '8.1', '8.2', '8.3']
+        ts: ['cli', 'zts']
+    container:
+      image: php:${{ matrix.php }}-${{ matrix.ts }}
+    steps:
+      - name: Install build dependencies
+        run: |
+          apt-get update
+          apt-get install -y "automake" "libtool" "libcrypt-dev"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Make xpass
+        run: |
+          phpize
+          ./configure
+          make -j"$(nproc)"
+      - name: Test xpass
+        env:
+          TEST_PHP_ARGS: '-q --show-diff'
+        run: make test
