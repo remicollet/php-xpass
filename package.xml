@@ -16,18 +16,18 @@ distributions, using extended crypt library (libxcrypt):
     <email>remi@php.net</email>
     <active>yes</active>
   </lead>
-  <date>2024-09-02</date>
+  <date>2024-09-09</date>
   <version>
-    <release>1.0.0RC2</release>
+    <release>1.0.0</release>
     <api>1.0.0</api>
   </version>
   <stability>
-    <release>beta</release>
+    <release>stable</release>
     <api>stable</api>
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
   <notes>
-- fix libxcrypt algorithm detection (@zeriyoshi)
+- first RC release
   </notes>
   <contents>
     <dir name="/">
@@ -59,6 +59,21 @@ distributions, using extended crypt library (libxcrypt):
   <providesextension>xpass</providesextension>
   <extsrcrelease/>
   <changelog>
+    <release>
+      <date>2024-09-02</date>
+      <version>
+        <release>1.0.0RC2</release>
+        <api>1.0.0</api>
+      </version>
+      <stability>
+        <release>beta</release>
+        <api>stable</api>
+      </stability>
+      <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
+      <notes>
+- fix libxcrypt algorithm detection (@zeriyoshi)
+      </notes>
+    </release>
     <release>
       <date>2024-08-28</date>
       <version>
