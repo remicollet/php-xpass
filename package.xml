@@ -71,7 +71,7 @@ distributions, using extended crypt library (libxcrypt):
       </stability>
       <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
       <notes>
-- first RC release
+- first GA release
       </notes>
     </release>
     <release>
