@@ -27,7 +27,7 @@ distributions, using extended crypt library (libxcrypt):
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
   <notes>
-- add crypt_gensalt(?string $salt = null, int $count = 0): ?string {}
+- add crypt_gensalt(?string $prefix = null, int $count = 0): ?string {}
 - add crypt_preferred_method(): ?string {}
 - add crypt_checksalt(string $salt): int {}
   </notes>

@@ -190,14 +190,14 @@ PHP_FUNCTION(crypt_preferred_method)
 /* {{{ Determine whether the user's passphrase should be re-hashed using the currently preferred hashing method */
 PHP_FUNCTION(crypt_checksalt)
 {
-	char *prefix;
-	size_t prefix_len;
+	char *salt;
+	size_t salt_len;
 
 	ZEND_PARSE_PARAMETERS_START(1, 1)
-		Z_PARAM_STRING(prefix, prefix_len)
+		Z_PARAM_STRING(salt, salt_len)
 	ZEND_PARSE_PARAMETERS_END();
 
-	RETURN_LONG(crypt_checksalt(prefix));
+	RETURN_LONG(crypt_checksalt(salt));
 }
 /* }}} */
 

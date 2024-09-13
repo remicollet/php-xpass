@@ -2,15 +2,15 @@
 Test crypt_gensalt
 --FILE--
 <?php
-var_dump(crypt_gensalt(XPASS_CRYPT_STD_DES));
-var_dump(crypt_gensalt(XPASS_CRYPT_EXT_DES));
-var_dump(crypt_gensalt(XPASS_CRYPT_MD5));
-var_dump(crypt_gensalt(XPASS_CRYPT_BLOWFISH));
-var_dump(crypt_gensalt(XPASS_CRYPT_SHA256));
-var_dump(crypt_gensalt(XPASS_CRYPT_SHA512));
-var_dump(crypt_gensalt(XPASS_CRYPT_SCRYPT));
-var_dump(crypt_gensalt(XPASS_CRYPT_GOST_YESCRYPT));
-var_dump(crypt_gensalt(XPASS_CRYPT_YESCRYPT));
+var_dump(crypt_gensalt(CRYPT_PREFIX_STD_DES));
+var_dump(crypt_gensalt(CRYPT_PREFIX_EXT_DES));
+var_dump(crypt_gensalt(CRYPT_PREFIX_MD5));
+var_dump(crypt_gensalt(CRYPT_PREFIX_BLOWFISH));
+var_dump(crypt_gensalt(CRYPT_PREFIX_SHA256));
+var_dump(crypt_gensalt(CRYPT_PREFIX_SHA512));
+var_dump(crypt_gensalt(CRYPT_PREFIX_SCRYPT));
+var_dump(crypt_gensalt(CRYPT_PREFIX_GOST_YESCRYPT));
+var_dump(crypt_gensalt(CRYPT_PREFIX_YESCRYPT));
 
 ?>
 --EXPECTF--

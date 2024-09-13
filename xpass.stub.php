@@ -6,26 +6,24 @@
  */
 
 
-/* use XPASS prefix to avoid conflicts with standard constants */
-
 /** @var string */
-const XPASS_CRYPT_STD_DES = '';
+const CRYPT_PREFIX_STD_DES = '';
 /** @var string */
-const XPASS_CRYPT_EXT_DES = '_';
+const CRYPT_PREFIX_EXT_DES = '_';
 /** @var string */
-const XPASS_CRYPT_MD5 = '$1$';
+const CRYPT_PREFIX_MD5 = '$1$';
 /** @var string */
-const XPASS_CRYPT_BLOWFISH = '$2y$';
+const CRYPT_PREFIX_BLOWFISH = '$2y$';
 /** @var string */
-const XPASS_CRYPT_SHA256 = '$5$';
+const CRYPT_PREFIX_SHA256 = '$5$';
 /** @var string */
-const XPASS_CRYPT_SHA512 = '$6$';
+const CRYPT_PREFIX_SHA512 = '$6$';
 /** @var string */
-const XPASS_CRYPT_SCRYPT = '$7$';
+const CRYPT_PREFIX_SCRYPT = '$7$';
 /** @var string */
-const XPASS_CRYPT_GOST_YESCRYPT = '$gy$';
+const CRYPT_PREFIX_GOST_YESCRYPT = '$gy$';
 /** @var string */
-const XPASS_CRYPT_YESCRYPT = '$y$';
+const CRYPT_PREFIX_YESCRYPT = '$y$';
 
 /**
  * @var int
@@ -54,7 +52,7 @@ const CRYPT_SALT_METHOD_LEGACY = UNKNOWN;
 const CRYPT_SALT_TOO_CHEAP = UNKNOWN;
 
 
-function crypt_gensalt(?string $salt = null, int $count = 0): ?string {}
+function crypt_gensalt(?string $prefix = null, int $count = 0): ?string {}
 
 function crypt_preferred_method(): ?string {}
 
