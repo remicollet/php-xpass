@@ -30,6 +30,7 @@ distributions, using extended crypt library (libxcrypt):
 - add crypt_gensalt(?string $prefix = null, int $count = 0): ?string {}
 - add crypt_preferred_method(): ?string {}
 - add crypt_checksalt(string $salt): int {}
+- add CRYPT_PREFIX_* and CRYPT_SALT_* constants
   </notes>
   <contents>
     <dir name="/">
