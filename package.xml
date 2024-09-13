@@ -16,22 +16,22 @@ distributions, using extended crypt library (libxcrypt):
     <email>remi@php.net</email>
     <active>yes</active>
   </lead>
-  <date>2024-09-09</date>
+  <date>2024-09-13</date>
   <version>
-    <release>1.1.0dev</release>
+    <release>1.1.0RC1</release>
     <api>1.1.0</api>
   </version>
   <stability>
-    <release>stable</release>
-    <api>stable</api>
+    <release>beta</release>
+    <api>beta</api>
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
-  <notes>
+  <notes><![CDATA[
 - add crypt_gensalt(?string $prefix = null, int $count = 0): ?string {}
 - add crypt_preferred_method(): ?string {}
 - add crypt_checksalt(string $salt): int {}
 - add CRYPT_PREFIX_* and CRYPT_SALT_* constants
-  </notes>
+  ]]></notes>
   <contents>
     <dir name="/">
       <!-- sources -->
