@@ -9,6 +9,12 @@ distributions, using extended crypt library (libxcrypt):
 
 * sha512 provided for legacy as used on some old distributions
 * yescrypt used on modern distributions
+
+It also provides additional functions from libxcrypt missing in core PHP:
+
+* crypt_preferred_method
+* crypt_gensalt
+* crypt_checksalt
 </description>
   <lead>
     <name>Remi Collet</name>

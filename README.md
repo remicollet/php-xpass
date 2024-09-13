@@ -7,6 +7,14 @@ This extension provides password hashing algorithms used by Linux distributions.
 
 Notices: these can be fast, don't expect improved security level.
 
+It also provides additional functions from libxcrypt missing in core PHP:
+
+* crypt_preferred_method: get the prefix of the preferred hash method
+* crypt_gensalt: encode settings for passphrase hashing
+* crypt_checksalt: validate a crypt setting string
+
+See the Linux man pages.
+
 **Computation time**
 
 * bcrypt: 0.33"
