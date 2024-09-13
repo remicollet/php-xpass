@@ -18,8 +18,8 @@ distributions, using extended crypt library (libxcrypt):
   </lead>
   <date>2024-09-09</date>
   <version>
-    <release>1.0.1dev</release>
-    <api>1.0.0</api>
+    <release>1.1.0dev</release>
+    <api>1.1.0</api>
   </version>
   <stability>
     <release>stable</release>
@@ -27,7 +27,9 @@ distributions, using extended crypt library (libxcrypt):
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
   <notes>
-- 
+- add crypt_gensalt(?string $salt = null, int $count = 0): ?string {}
+- add crypt_preferred_method(): ?string {}
+- add crypt_checksalt(string $salt): int {}
   </notes>
   <contents>
     <dir name="/">
@@ -35,11 +37,18 @@ distributions, using extended crypt library (libxcrypt):
       <file name="config.m4" role="src"/>
       <file name="php_xpass.h" role="src" />
       <file name="xpass.c" role="src"/>
+      <file name="xpass.stub.php" role="src"/>
+      <file name="xpass_arginfo.h" role="src"/>
       <!-- documentation -->
       <file name="CREDITS" role="doc"/>
       <file name="LICENSE" role="doc"/>
       <file name="README.md" role="doc"/>
+      <!-- tests -->
       <dir name ="tests">
+        <file name="crypt_checksalt.phpt" role="test"/>
+        <file name="crypt_gensalt.phpt" role="test"/>
+        <file name="crypt_preferred_method.phpt" role="test"/>
+        <file name="password_compat.phpt" role="test"/>
         <file name="sha512.phpt" role="test"/>
         <file name="xpass.phpt" role="test"/>
         <file name="yescrypt.phpt" role="test"/>
