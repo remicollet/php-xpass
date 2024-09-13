@@ -67,6 +67,25 @@ From the sources tree
 
 * `cost` controls the CPU time cost of the hash. If `cost` is 0, a reasonable default cost will be selected.
 
+## crypt helpers
+
+    $ php -a
+
+    php > var_dump(crypt_preferred_method());
+    string(3) "$y$"
+
+    php > var_dump($salt = crypt_gensalt());
+    string(29) "$y$j9T$EitfN8MxRjFzV5tNe97D70"
+
+    php > var_dump(crypt_checksalt($salt) == CRYPT_SALT_OK);
+    bool(true)
+
+    php > var_dump($hash = crypt("secret", $salt));
+    string(73) "$y$j9T$EitfN8MxRjFzV5tNe97D70$vGtxczdGMTLh0LfpwxAmyzgba7EODsmazEh03kpvbh3"
+
+    php > var_dump($hash === crypt("secret", $hash));
+    bool(true)
+
 # LICENSE
 
 Author: Remi Collet
