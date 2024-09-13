@@ -1,5 +1,5 @@
 /* This is a generated file, edit the .stub.php file instead.
- * Stub hash: db002b549531b275130c17883ff9810fb13017b1 */
+ * Stub hash: 09c1d047a579afe870fadd302bd2e34a5d06c370 */
 
 ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_crypt_gensalt, 0, 0, IS_STRING, 1)
 	ZEND_ARG_TYPE_INFO_WITH_DEFAULT_VALUE(0, salt, IS_STRING, 1, "null")
@@ -13,11 +13,9 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_crypt_checksalt, 0, 1, IS_LONG, 
 	ZEND_ARG_TYPE_INFO(0, salt, IS_STRING, 0)
 ZEND_END_ARG_INFO()
 
-
 ZEND_FUNCTION(crypt_gensalt);
 ZEND_FUNCTION(crypt_preferred_method);
 ZEND_FUNCTION(crypt_checksalt);
-
 
 static const zend_function_entry ext_functions[] = {
 	ZEND_FE(crypt_gensalt, arginfo_crypt_gensalt)
