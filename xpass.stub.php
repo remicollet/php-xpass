@@ -2,6 +2,7 @@
 
 /** @generate-class-entries */
 
+
 /* use XPASS prefix to avoid conflicts with standard constants */
 
 /** @var string */
