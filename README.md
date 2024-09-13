@@ -9,9 +9,9 @@ Notices: these can be fast, don't expect improved security level.
 
 It also provides additional functions from libxcrypt missing in core PHP:
 
-* crypt_preferred_method: get the prefix of the preferred hash method
-* crypt_gensalt: encode settings for passphrase hashing
-* crypt_checksalt: validate a crypt setting string
+* `crypt_preferred_method`: get the prefix of the preferred hash method
+* `crypt_gensalt`: encode settings for passphrase hashing
+* `crypt_checksalt`: validate a crypt setting string
 
 See the Linux man pages.
 
@@ -35,7 +35,7 @@ See the Linux man pages.
 
 Compatible with PHP 8.0 or greater.
 
-You need the Extended crypt library development files (libxcrypt-devel)
+You need the Extended crypt library development files (libxcrypt-devel, libcrypt-dev)
 version 4.4 or greater.
 
 From the sources tree
