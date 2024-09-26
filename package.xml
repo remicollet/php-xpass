@@ -22,14 +22,14 @@ It also provides additional functions from libxcrypt missing in core PHP:
     <email>remi@php.net</email>
     <active>yes</active>
   </lead>
-  <date>2024-09-13</date>
+  <date>2024-09-26</date>
   <version>
-    <release>1.1.0RC1</release>
+    <release>1.1.0</release>
     <api>1.1.0</api>
   </version>
   <stability>
-    <release>beta</release>
-    <api>beta</api>
+    <release>stable</release>
+    <api>stable</api>
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
   <notes><![CDATA[
