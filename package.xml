@@ -24,7 +24,7 @@ It also provides additional functions from libxcrypt missing in core PHP:
   </lead>
   <date>2024-09-26</date>
   <version>
-    <release>1.1.0</release>
+    <release>1.1.1dev</release>
     <api>1.1.0</api>
   </version>
   <stability>
@@ -33,10 +33,7 @@ It also provides additional functions from libxcrypt missing in core PHP:
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
   <notes><![CDATA[
-- add crypt_gensalt(?string $prefix = null, int $count = 0): ?string {}
-- add crypt_preferred_method(): ?string {}
-- add crypt_checksalt(string $salt): int {}
-- add CRYPT_PREFIX_* and CRYPT_SALT_* constants
+-
   ]]></notes>
   <contents>
     <dir name="/">
@@ -75,6 +72,24 @@ It also provides additional functions from libxcrypt missing in core PHP:
   <providesextension>xpass</providesextension>
   <extsrcrelease/>
   <changelog>
+    <release>
+      <date>2024-09-26</date>
+      <version>
+        <release>1.1.0</release>
+        <api>1.1.0</api>
+      </version>
+      <stability>
+        <release>stable</release>
+        <api>stable</api>
+      </stability>
+      <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
+      <notes><![CDATA[
+- add crypt_gensalt(?string $prefix = null, int $count = 0): ?string {}
+- add crypt_preferred_method(): ?string {}
+- add crypt_checksalt(string $salt): int {}
+- add CRYPT_PREFIX_* and CRYPT_SALT_* constants
+      ]]></notes>
+    </release>
     <release>
       <date>2024-09-09</date>
       <version>
