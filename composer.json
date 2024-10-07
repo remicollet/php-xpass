@@ -1,0 +1,13 @@
+{
+    "name": "remi/xpass",
+    "type": "php-ext",
+    "license": "PHP-3.01",
+    "description": "Extended password extension",
+    "require": {
+        "php": ">= 8.0.0"
+    },
+    "php-ext": {
+        "extension-name": "xpass",
+        "configure-options": []
+    }
+}
