@@ -1,0 +1,14 @@
+ARG_ENABLE("xpass", "Enable xpass support", "no");
+
+if (PHP_XPASS != "no") {
+    if (CHECK_LIB("crypt.lib", "xpass", PHP_XPASS)
+     && CHECK_HEADER_ADD_INCLUDE("crypt.h", "CLFAGS_XPASS", PHP_XPASS)
+     && CHECK_LIB("bcrypt.lib", "xpass", PHP_XPASS)) {
+        AC_DEFINE("HAVE_XPASS", 1, "Have xpass support");
+        EXTENSION("xpass", "xpass.c");
+        AC_DEFINE("HAVE_CRYPT_YESCRYPT", 1, "Have yescrypt hash support");
+        AC_DEFINE("HAVE_CRYPT_SHA512", 1, "Have sha512 hash support");
+    } else {
+        WARNING("xpass not enabled; libraries and headers not found");
+    }
+}
