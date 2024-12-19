@@ -13,7 +13,7 @@ It also provides additional functions from libxcrypt missing in core PHP:
 * `crypt_gensalt`: encode settings for passphrase hashing
 * `crypt_checksalt`: validate a crypt setting string
 
-See the Linux man pages.
+See the Linux man pages or [PHP Documentation](https://www.php.net/xpass)
 
 **Computation time**
 
