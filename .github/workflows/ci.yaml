@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        fedora: [39, 40, 41]
+        fedora: [40, 41]
         php: [0, 'remi-8.0', 'remi-8.1', 'remi-8.2', 'remi-8.3', 'remi-8.4']
     container:
       image: fedora:${{ matrix.fedora }}
