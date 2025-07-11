@@ -47,6 +47,9 @@ jobs:
     container:
       image: ${{ matrix.distro }}:${{ matrix.el }}
     steps:
+      - name: Install gzip
+        run: |
+          dnf install -y "gzip"
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup PHP module
