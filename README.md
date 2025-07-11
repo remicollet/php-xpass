@@ -1,3 +1,6 @@
+[![CI](https://github.com/remicollet/php-xpass/actions/workflows/ci.yaml/badge.svg)](https://github.com/remicollet/php-xpass/actions/workflows/ci.yaml)
+
+
 # xpass extension for PHP
 
 This extension provides password hashing algorithms used by Linux distributions.
