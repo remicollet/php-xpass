@@ -49,6 +49,7 @@ See PHP documentation on https://www.php.net/xpass
       <file name="CREDITS" role="doc"/>
       <file name="LICENSE" role="doc"/>
       <file name="README.md" role="doc"/>
+      <file name="CHANGELOG.md" role="doc"/>
       <!-- tests -->
       <dir name ="tests">
         <file name="crypt_checksalt.phpt" role="test"/>
