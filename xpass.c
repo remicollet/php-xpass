@@ -62,17 +62,16 @@ PHP_MINFO_FUNCTION(xpass)
 }
 /* }}} */
 
-static bool get_options(zend_array *options, zend_ulong *cost) {
+static void get_options(zend_array *options, zend_ulong *cost) {
 	zval *opt;
 
 	*cost = 0;
 	if (!options) {
-		return true;
+		return;
 	}
 	if ((opt = zend_hash_str_find(options, "cost", strlen("cost")))) {
 		*cost = zval_get_long(opt);
 	}
-	return true;
 }
 
 
@@ -82,9 +81,7 @@ static zend_string *php_xpass_hash(const zend_string *password, zend_array *opti
 
 	memset(&data, 0, sizeof(data));
 
-	if (!get_options(options, &cost)) {
-		return NULL;
-	}
+	get_options(options, &cost);
 	if ((ZSTR_LEN(password) >= CRYPT_MAX_PASSPHRASE_SIZE)) {
 		zend_value_error("Password is too long");
 		return NULL;
