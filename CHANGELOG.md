@@ -1,6 +1,10 @@
 # Unreleased
 
--
+# Version 1.2.0 - 2026-01-13
+
+- add SM3 hash algos available in libxcrypt 4.5
+- add CRYPT_PREFIX_SM3CRYPT and CRYPT_PREFIX_SM3_YESCRYPT constants
+- add PASSWORD_SM3CRYPT and PASSWORD_SM3_YESCRYPT constants
 
 # Version 1.1.0 - 2024-09-26
 

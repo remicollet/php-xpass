@@ -7,6 +7,8 @@ This extension provides password hashing algorithms used by Linux distributions.
 
 * **sha512** (`$6$`) provided for legacy as used on some old distributions (ex: RHEL-8)
 * **yescrypt** (`$y$`) used on modern distributions
+* **sm3crypt** (`$sm3$`)
+* **sm3yescrypt** (`$sm3y$`)
 
 Notices: these can be fast, don't expect improved security level.
 
@@ -28,6 +30,8 @@ See the Linux man pages or [PHP Documentation](https://www.php.net/xpass)
 * yescrypt: 0.14" with cost=6
 * yescrypt: 0.30" with cost=7
 * yescrypt: 0.62" with cost=8
+* sm3crypt: 0.01"
+* yessm3crypt: 0.02"
 
 # Sources
 

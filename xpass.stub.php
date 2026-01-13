@@ -24,6 +24,12 @@ const CRYPT_PREFIX_SCRYPT = '$7$';
 const CRYPT_PREFIX_GOST_YESCRYPT = '$gy$';
 /** @var string */
 const CRYPT_PREFIX_YESCRYPT = '$y$';
+#ifdef HAVE_CRYPT_SM3
+/** @var string */
+const CRYPT_PREFIX_SM3CRYPT = '$sm3$';
+/** @var string */
+const CRYPT_PREFIX_SM3_YESCRYPT = '$sm3y$';
+#endif
 
 /**
  * @var int

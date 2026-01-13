@@ -58,6 +58,11 @@ PHP_MINFO_FUNCTION(xpass)
 #else
 	php_info_print_table_row(2, "yescrypt hash", "no");
 #endif
+#ifdef HAVE_CRYPT_SM3
+	php_info_print_table_row(2, "sm3 hash", "yes");
+#else
+	php_info_print_table_row(2, "sm3 hash", "no");
+#endif
 	php_info_print_table_end();
 }
 /* }}} */
@@ -97,13 +102,27 @@ static zend_string *php_xpass_hash(const zend_string *password, zend_array *opti
 	return zend_string_init(data.output, strlen(data.output), 0);
 }
 
+#ifdef HAVE_CRYPT_YESCRYPT
 static zend_string *php_xpass_yescrypt_hash(const zend_string *password, zend_array *options) {
 	return php_xpass_hash(password, options, "$y$");
 }
+#endif
 
+#ifdef HAVE_CRYPT_SHA512
 static zend_string *php_xpass_sha512_hash(const zend_string *password, zend_array *options) {
 	return php_xpass_hash(password, options, "$6$");
 }
+#endif
+
+#ifdef HAVE_CRYPT_SM3
+static zend_string *php_xpass_sm3crypt_hash(const zend_string *password, zend_array *options) {
+	return php_xpass_hash(password, options, "$sm3$");
+}
+
+static zend_string *php_xpass_sm3yescrypt_hash(const zend_string *password, zend_array *options) {
+	return php_xpass_hash(password, options, "$sm3y$");
+}
+#endif
 
 static bool php_xpass_verify(const zend_string *password, const zend_string *hash) {
 	struct crypt_data data;
@@ -130,6 +149,7 @@ static bool php_xpass_needs_rehash(const zend_string *hash, zend_array *options)
 	return 0;
 }
 
+#ifdef HAVE_CRYPT_SHA512
 static const php_password_algo xpass_algo_sha512 = {
 	"sha512",
 	php_xpass_sha512_hash,
@@ -138,7 +158,9 @@ static const php_password_algo xpass_algo_sha512 = {
 	NULL, // php_xpass_yescrypt_get_info,
 	NULL,
 };
+#endif
 
+#ifdef HAVE_CRYPT_YESCRYPT
 static const php_password_algo xpass_algo_yescrypt = {
 	"yescrypt",
 	php_xpass_yescrypt_hash,
@@ -147,6 +169,27 @@ static const php_password_algo xpass_algo_yescrypt = {
 	NULL, // php_xpass_yescrypt_get_info,
 	NULL,
 };
+#endif
+
+#ifdef HAVE_CRYPT_SM3
+static const php_password_algo xpass_algo_sm3crypt = {
+	"sm3crypt",
+	php_xpass_sm3crypt_hash,
+	php_xpass_verify,
+	php_xpass_needs_rehash,
+	NULL, // php_xpass_yescrypt_get_info,
+	NULL,
+};
+
+static const php_password_algo xpass_algo_sm3yescrypt = {
+	"sm3yescrypt",
+	php_xpass_sm3yescrypt_hash,
+	php_xpass_verify,
+	php_xpass_needs_rehash,
+	NULL, // php_xpass_yescrypt_get_info,
+	NULL,
+};
+#endif
 
 /* {{{ Generates a salt for algo */
 PHP_FUNCTION(crypt_gensalt)
@@ -203,17 +246,25 @@ PHP_MINIT_FUNCTION(xpass) /* {{{ */ {
 	register_xpass_symbols(module_number);
 
 #ifdef HAVE_CRYPT_SHA512
-	if (FAILURE == php_password_algo_register("6", &xpass_algo_sha512)) {
-		return FAILURE;
+	if (SUCCESS == php_password_algo_register("6", &xpass_algo_sha512)) {
+		REGISTER_STRING_CONSTANT("PASSWORD_SHA512", "6", CONST_CS | CONST_PERSISTENT);
 	}
-	REGISTER_STRING_CONSTANT("PASSWORD_SHA512", "6", CONST_CS | CONST_PERSISTENT);
 #endif
 
 #ifdef HAVE_CRYPT_YESCRYPT
-	if (FAILURE == php_password_algo_register("y", &xpass_algo_yescrypt)) {
-		return FAILURE;
+	if (SUCCESS == php_password_algo_register("y", &xpass_algo_yescrypt)) {
+		REGISTER_STRING_CONSTANT("PASSWORD_YESCRYPT", "y", CONST_CS | CONST_PERSISTENT);
 	}
-	REGISTER_STRING_CONSTANT("PASSWORD_YESCRYPT", "y", CONST_CS | CONST_PERSISTENT);
+#endif
+
+#ifdef HAVE_CRYPT_SM3
+	if (SUCCESS == php_password_algo_register("sm3", &xpass_algo_sm3crypt)) {
+		REGISTER_STRING_CONSTANT("PASSWORD_SM3CRYPT", "sm3", CONST_CS | CONST_PERSISTENT);
+	}
+
+	if (SUCCESS == php_password_algo_register("sm3y", &xpass_algo_sm3yescrypt)) {
+		REGISTER_STRING_CONSTANT("PASSWORD_SM3_YESCRYPT", "sm3y", CONST_CS | CONST_PERSISTENT);
+	}
 #endif
 
 	return SUCCESS;

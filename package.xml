@@ -9,6 +9,8 @@ distributions, using extended crypt library (libxcrypt):
 
 * sha512 provided for legacy as used on some old distributions
 * yescrypt used on modern distributions
+* sm3crypt
+* sm3yescrypt
 
 It also provides additional functions from libxcrypt missing in core PHP:
 
@@ -24,9 +26,9 @@ See PHP documentation on https://www.php.net/xpass
     <email>remi@php.net</email>
     <active>yes</active>
   </lead>
-  <date>2024-09-26</date>
+  <date>2026-01-13</date>
   <version>
-    <release>1.1.1dev</release>
+    <release>1.2.0</release>
     <api>1.1.0</api>
   </version>
   <stability>
@@ -35,7 +37,9 @@ See PHP documentation on https://www.php.net/xpass
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
   <notes><![CDATA[
--
+- add SM3 hash algos available in libxcrypt 4.5
+- add CRYPT_PREFIX_SM3CRYPT and CRYPT_PREFIX_SM3_YESCRYPT constants
+- add PASSWORD_SM3CRYPT and PASSWORD_SM3_YESCRYPT constants
   ]]></notes>
   <contents>
     <dir name="/">
@@ -54,9 +58,12 @@ See PHP documentation on https://www.php.net/xpass
       <dir name ="tests">
         <file name="crypt_checksalt.phpt" role="test"/>
         <file name="crypt_gensalt.phpt" role="test"/>
+        <file name="crypt_gensalt2.phpt" role="test"/>
         <file name="crypt_preferred_method.phpt" role="test"/>
         <file name="password_compat.phpt" role="test"/>
         <file name="sha512.phpt" role="test"/>
+        <file name="sm3crypt.phpt" role="test"/>
+        <file name="sm3yescrypt.phpt" role="test"/>
         <file name="xpass.phpt" role="test"/>
         <file name="yescrypt.phpt" role="test"/>
       </dir>

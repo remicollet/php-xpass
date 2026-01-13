@@ -50,6 +50,24 @@ int main(void) {
     AC_MSG_RESULT([missing])
   ])
 
+  AC_MSG_CHECKING([for sm3 algo])
+  AC_RUN_IFELSE([AC_LANG_SOURCE([[
+#include <string.h>
+#include <unistd.h>
+#include <crypt.h>
+#include <stdlib.h>
+
+int main(void) {
+    char salt[8];
+	salt[0]='$'; salt[1]='s'; salt[2]='m'; salt[3]='3'; salt[4]='$'; salt[5]=0;
+	return crypt_gensalt(salt, 0, NULL, 0) ? 0 : 1;
+}]])],[
+    AC_DEFINE([HAVE_CRYPT_SM3], [1], [ Have sm3 hash support ])
+    AC_MSG_RESULT([available])
+  ], [
+    AC_MSG_RESULT([missing])
+  ])
+
   CFLAGS=$old_CFLAGS
   LIBS=$old_LIBS
 
