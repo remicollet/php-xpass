@@ -37,9 +37,7 @@ See PHP documentation on https://www.php.net/xpass
   </stability>
   <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
   <notes><![CDATA[
-- add SM3 hash algos available in libxcrypt 4.5
-- add CRYPT_PREFIX_SM3CRYPT and CRYPT_PREFIX_SM3_YESCRYPT constants
-- add PASSWORD_SM3CRYPT and PASSWORD_SM3_YESCRYPT constants
+- improve algo availability check
   ]]></notes>
   <contents>
     <dir name="/">

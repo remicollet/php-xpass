@@ -22,9 +22,14 @@ if test "$PHP_XPASS" != "no"; then
 #include <stdlib.h>
 
 int main(void) {
-    char salt[8];
-	salt[0]='$'; salt[1]='y'; salt[2]='$'; salt[3]=0;
-	return crypt_gensalt(salt, 0, NULL, 0) ? 0 : 1;
+    char algo[8], *salt, *hash;
+	algo[0]='$'; algo[1]='y'; algo[2]='$'; algo[3]=0;
+	salt = crypt_gensalt(algo, 0, NULL, 0);
+	if (salt) {
+		hash = crypt("secret", salt);
+		return (hash && strlen(hash) == 73 && !memcmp(hash, algo, 3) ? 0 : 1);
+	}
+	return 1;
 }]])],[
     AC_DEFINE([HAVE_CRYPT_YESCRYPT], [1], [ Have yescrypt hash support ])
     AC_MSG_RESULT([available])
@@ -40,9 +45,14 @@ int main(void) {
 #include <stdlib.h>
 
 int main(void) {
-    char salt[8];
-	salt[0]='$'; salt[1]='6'; salt[2]='$'; salt[3]=0;
-	return crypt_gensalt(salt, 0, NULL, 0) ? 0 : 1;
+    char algo[8], *salt, *hash;
+	algo[0]='$'; algo[1]='6'; algo[2]='$'; algo[3]=0;
+	salt = crypt_gensalt(algo, 0, NULL, 0);
+	if (salt) {
+		hash = crypt("secret", salt);
+		return (hash && strlen(hash) == 106 && !memcmp(hash, algo, 3) ? 0 : 1);
+	}
+	return 1;
 }]])],[
     AC_DEFINE([HAVE_CRYPT_SHA512], [1], [ Have sha512 hash support ])
     AC_MSG_RESULT([available])
@@ -58,9 +68,14 @@ int main(void) {
 #include <stdlib.h>
 
 int main(void) {
-    char salt[8];
-	salt[0]='$'; salt[1]='s'; salt[2]='m'; salt[3]='3'; salt[4]='$'; salt[5]=0;
-	return crypt_gensalt(salt, 0, NULL, 0) ? 0 : 1;
+    char algo[8], *salt, *hash;
+	algo[0]='$'; algo[1]='s'; algo[2]='m'; algo[3]='3'; algo[4]='$'; algo[5]=0;
+	salt = crypt_gensalt(algo, 0, NULL, 0);
+	if (salt) {
+		hash = crypt("secret", salt);
+		return (hash && strlen(hash) == 65 && !memcmp(hash, algo, 5) ? 0 : 1);
+	}
+	return 1;
 }]])],[
     AC_DEFINE([HAVE_CRYPT_SM3], [1], [ Have sm3 hash support ])
     AC_MSG_RESULT([available])

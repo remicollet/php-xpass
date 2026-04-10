@@ -1,5 +1,7 @@
 # Unreleased
 
+- improve algo availability check
+
 # Version 1.2.0 - 2026-01-13
 
 - add SM3 hash algos available in libxcrypt 4.5
