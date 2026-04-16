@@ -14,9 +14,9 @@ PHP_ARG_WITH([xpass-dlopen],
 
 if test "$PHP_XPASS" != "no"; then
   PKG_CHECK_MODULES([LIBXCRYPT], [libxcrypt >= 4.4])
+  PHP_EVAL_INCLINE([$LIBXCRYPT_CFLAGS])
 
   if test "$PHP_XPASS_DLOPEN" = "no"; then
-    PHP_EVAL_INCLINE([$LIBXCRYPT_CFLAGS])
     PHP_EVAL_LIBLINE([$LIBXCRYPT_LIBS], [XPASS_SHARED_LIBADD])
   elif test "$PHP_XPASS_DLOPEN" = "yes"; then
     AC_DEFINE([USE_LIBCRYPT_DLOPEN], ["libcrypt.so.2"], [ libcrypt path for dlopen ])
