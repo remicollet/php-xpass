@@ -10,8 +10,14 @@
         "extension-name": "xpass",
         "configure-options": [
             {
+                "name": "enable-xpass",
+                "description": "Enable xpass support"
+            },
+
+            {
                 "name": "with-xpass-dlopen",
-                "description": "dlopen libcrypt library at runtime (workaround for MUSL)"
+                "description": "dlopen libcrypt library at runtime (workaround for MUSL)",
+                "needs-value": true
             }
         ]
     }
