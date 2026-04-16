@@ -111,8 +111,8 @@ Author: Remi Collet
 
 This extension is licensed under [New BSD License](https://opensource.org/license/bsd-3-clause)
 
-- SPDX-FileCopyrightText:  Copyright (c) Remi Collet <remi@php.net>
-- SPDX-License-Identifier: BSD-3-Clause                                |
+- SPDX-FileCopyrightText:  Copyright (c) Remi Collet
+- SPDX-License-Identifier: BSD-3-Clause
 
 # History
 
