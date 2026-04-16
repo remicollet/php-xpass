@@ -20,7 +20,7 @@ extern zend_module_entry xpass_module_entry;
 
 #define PHP_XPASS_VERSION "1.2.1-dev"
 #define PHP_XPASS_AUTHOR  "Remi Collet"
-#define PHP_XPASS_LICENSE "PHP-3.01"
+#define PHP_XPASS_LICENSE "BSD-3-Clause"
 
 # if defined(ZTS) && defined(COMPILE_DL_XPASS)
 ZEND_TSRMLS_CACHE_EXTERN()
