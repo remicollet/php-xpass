@@ -24,6 +24,25 @@
 
 #include "xpass_arginfo.h"
 
+#ifdef USE_LIBCRYPT_DLOPEN
+static struct _libsyms {
+	void *handle;
+	char * (*crypt_r) (const char *__phrase, const char *__setting,
+			struct crypt_data *__restrict __data);
+	char * (*crypt_gensalt_rn) (const char *__prefix, unsigned long __count,
+			const char *__rbytes, int __nrbytes,
+			char *__output, int __output_size);
+	int (*crypt_checksalt) (const char *__setting);
+	const char * (*crypt_preferred_method) (void);
+} libsyms;
+
+/* substitute symbols */
+#define crypt_r                libsyms.crypt_r
+#define crypt_gensalt_rn       libsyms.crypt_gensalt_rn
+#define crypt_checksalt        libsyms.crypt_checksalt
+#define crypt_preferred_method libsyms.crypt_preferred_method
+#endif
+
 /* {{{ PHP_RINIT_FUNCTION */
 PHP_RINIT_FUNCTION(xpass)
 {
@@ -42,6 +61,9 @@ PHP_MINFO_FUNCTION(xpass)
 	php_info_print_table_header(2, "Extended password support", "enabled");
 	php_info_print_table_row(2, "Extension version", PHP_XPASS_VERSION);
 	php_info_print_table_row(2, "libxcrypt version", XCRYPT_VERSION_STR);
+#ifdef USE_LIBCRYPT_DLOPEN
+	php_info_print_table_row(2, "Loaded library", USE_LIBCRYPT_DLOPEN);
+#endif
 	php_info_print_table_row(2, "Author", PHP_XPASS_AUTHOR);
 	php_info_print_table_row(2, "License", PHP_XPASS_LICENSE);
 #ifdef HAVE_CRYPT_SHA512
@@ -237,7 +259,36 @@ PHP_FUNCTION(crypt_checksalt)
 }
 /* }}} */
 
+/* remove to not substitute symbols in MINIT */
+#undef crypt_r
+#undef crypt_gensalt_rn
+#undef crypt_checksalt
+#undef crypt_preferred_method
+
 PHP_MINIT_FUNCTION(xpass) /* {{{ */ {
+
+#ifdef USE_LIBCRYPT_DLOPEN
+	if ((libsyms.handle = dlopen(USE_LIBCRYPT_DLOPEN, RTLD_NOW)) == NULL) {
+		php_error_docref(NULL, E_ERROR, "xpass: Cannot load %s", USE_LIBCRYPT_DLOPEN);
+		return FAILURE;
+	}
+	if ((libsyms.crypt_r = dlsym(libsyms.handle, "crypt_r")) == NULL) {
+		php_error_docref(NULL, E_ERROR, "xpass: Cannot find crypt_r symbol");
+		return FAILURE;
+	}
+	if ((libsyms.crypt_gensalt_rn = dlsym(libsyms.handle, "crypt_gensalt_rn")) == NULL) {
+		php_error_docref(NULL, E_ERROR, "xpass: Cannot find crypt_gensalt_rn symbol");
+		return FAILURE;
+	}
+	if ((libsyms.crypt_checksalt = dlsym(libsyms.handle, "crypt_checksalt")) == NULL) {
+		php_error_docref(NULL, E_ERROR, "xpass: Cannot find crypt_checksalt symbol");
+		return FAILURE;
+	}
+	if ((libsyms.crypt_preferred_method = dlsym(libsyms.handle, "crypt_preferred_method")) == NULL) {
+		php_error_docref(NULL, E_ERROR, "xpass: Cannot find crypt_preferred_method symbol");
+		return FAILURE;
+	}
+#endif
 
 	register_xpass_symbols(module_number);
 
