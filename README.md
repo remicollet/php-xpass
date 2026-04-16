@@ -43,7 +43,6 @@ See the Linux man pages or [PHP Documentation](https://www.php.net/xpass)
 Compatible with PHP 8.0 or greater.
 
 It is recommended to ensure PHP is built using `--with-external-libcrypt` option.
-It is not compatible with MUSL implementation (e.g. on Alpine Linux).
 
 You need the Extended crypt library development files (libxcrypt-devel, libcrypt-dev)
 version 4.4 or greater.
@@ -54,6 +53,9 @@ From the sources tree
     $ ./configure --enable-xpass
     $ make
     $ make test
+
+It is not compatible with MUSL implementation (e.g. on Alpine Linux).
+Use the `--with-xpass-dlopen` to workaround the library conflict.
 
 From https://pecl.php.net/ using pecl command
 

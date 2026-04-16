@@ -39,6 +39,7 @@ See PHP documentation on https://www.php.net/xpass
   <notes><![CDATA[
 - improve algo availability check
 - update PHP License from version 3 to version 4 (BSD-3-Clause)
+- add --with-xpass-dlopen to workaround conflict with MUSL library
   ]]></notes>
   <contents>
     <dir name="/">

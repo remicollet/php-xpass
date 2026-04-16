@@ -1,13 +1,14 @@
 # Unreleased
 
 - improve algo availability check
-- update PHP License from version 3 to version 4 (BSD-3-Clause)
+- update PHP License from version 3 to version 4 (**BSD-3-Clause**)
+- add `--with-xpass-dlopen` to workaround conflict with MUSL library
 
 # Version 1.2.0 - 2026-01-13
 
 - add SM3 hash algos available in libxcrypt 4.5
-- add CRYPT_PREFIX_SM3CRYPT and CRYPT_PREFIX_SM3_YESCRYPT constants
-- add PASSWORD_SM3CRYPT and PASSWORD_SM3_YESCRYPT constants
+- add `CRYPT_PREFIX_SM3CRYPT` and `CRYPT_PREFIX_SM3_YESCRYPT` constants
+- add `PASSWORD_SM3CRYPT` and `PASSWORD_SM3_YESCRYPT constants`
 
 # Version 1.1.0 - 2024-09-26
 
