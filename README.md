@@ -109,7 +109,10 @@ From https://packagist.org/ using PHP Installer for Extensions
 
 Author: Remi Collet
 
-This extension is licensed under [The PHP License, version 3.01](http://www.php.net/license/3_01.txt)
+This extension is licensed under [New BSD License](https://opensource.org/license/bsd-3-clause)
+
+- SPDX-FileCopyrightText:  Copyright (c) Remi Collet <remi@php.net>
+- SPDX-License-Identifier: BSD-3-Clause                                |
 
 # History
 
