@@ -1,6 +1,7 @@
 # Unreleased
 
 - improve algo availability check
+- update PHP License from version 3 to version 4 (BSD-3-Clause)
 
 # Version 1.2.0 - 2026-01-13
 

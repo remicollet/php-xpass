@@ -35,9 +35,10 @@ See PHP documentation on https://www.php.net/xpass
     <release>stable</release>
     <api>stable</api>
   </stability>
-  <license uri="https://www.php.net/license/3_01.txt" filesource="LICENSE">PHP-3.01</license>
+  <license uri="https://opensource.org/license/BSD-3-Clause" filesource="LICENSE">BSD-3-Clause</license>
   <notes><![CDATA[
 - improve algo availability check
+- update PHP License from version 3 to version 4 (BSD-3-Clause)
   ]]></notes>
   <contents>
     <dir name="/">

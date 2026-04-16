@@ -1,4 +1,17 @@
 <?php
+/*
+  +----------------------------------------------------------------------+
+  | xpass extension for PHP                                              |
+  +----------------------------------------------------------------------+
+  | SPDX-FileCopyrightText: Copyright (c) Remi Collet <remi@php.net>     |
+  +----------------------------------------------------------------------+
+  | This source file is subject to the Modified BSD License that is      |
+  | bundled with this package in the file LICENSE, and is available      |
+  | through the WWW at <https://opensource.org/license/BSD-3-Clause>.    |
+  |                                                                      |
+  | SPDX-License-Identifier: BSD-3-Clause                                |
+  +----------------------------------------------------------------------+
+*/
 
 /**
  * @generate-class-entries
