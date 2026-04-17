@@ -26,9 +26,9 @@ See PHP documentation on https://www.php.net/xpass
     <email>remi@php.net</email>
     <active>yes</active>
   </lead>
-  <date>2026-01-13</date>
+  <date>2026-04-17</date>
   <version>
-    <release>1.2.1dev</release>
+    <release>1.2.1</release>
     <api>1.1.0</api>
   </version>
   <stability>

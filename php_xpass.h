@@ -18,7 +18,7 @@
 extern zend_module_entry xpass_module_entry;
 #define phpext_xpass_ptr &xpass_module_entry
 
-#define PHP_XPASS_VERSION "1.2.1-dev"
+#define PHP_XPASS_VERSION "1.2.1"
 #define PHP_XPASS_AUTHOR  "Remi Collet"
 #define PHP_XPASS_LICENSE "BSD-3-Clause"
 
