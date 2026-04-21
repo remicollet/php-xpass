@@ -45,6 +45,7 @@ See PHP documentation on https://www.php.net/xpass
     <dir name="/">
       <!-- sources -->
       <file name="config.m4" role="src"/>
+      <file name="config.w32" role="src"/>
       <file name="php_xpass.h" role="src" />
       <file name="xpass.c" role="src"/>
       <file name="xpass.stub.php" role="src"/>
