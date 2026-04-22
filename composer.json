@@ -3,7 +3,27 @@
     "type": "php-ext",
     "license": "BSD-3-Clause",
     "description": "Extended password extension",
-    "keywords": ["password", "sha512", "yescrypt", "sm3crypt", "sm3yescrypt", "crypt", "libxcrypt"],
+    "keywords": [
+        "password",
+        "sha512",
+        "yescrypt",
+        "sm3crypt",
+        "sm3yescrypt",
+        "crypt",
+        "libxcrypt"
+    ],
+    "authors": [
+        {
+        "name": "Remi Collet",
+        "email": "remi@php.net",
+        "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/remicollet/php-xpass/issues",
+        "source": "https://github.com/remicollet/php-xpass",
+        "docs": "https://www.php.net/xpass"
+    },
     "require": {
         "php": ">= 8.0.0"
     },
