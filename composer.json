@@ -3,6 +3,7 @@
     "type": "php-ext",
     "license": "BSD-3-Clause",
     "description": "Extended password extension",
+    "keywords": ["password", "sha512", "yescrypt", "sm3crypt", "sm3yescrypt", "crypt", "libxcrypt"],
     "require": {
         "php": ">= 8.0.0"
     },
